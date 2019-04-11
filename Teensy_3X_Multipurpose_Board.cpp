@@ -54,6 +54,8 @@ void MPBoard::begin()
 	SPI.begin();
 
 	myMP3.begin(MP3_SERIAL_PORT);
+	
+	analogReadResolution(16);
 
 	pinMode(GPS_PPS_PIN, INPUT);
 
