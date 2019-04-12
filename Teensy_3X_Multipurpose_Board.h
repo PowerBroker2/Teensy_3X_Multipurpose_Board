@@ -248,6 +248,10 @@ class MPBoard
 		bool configureAsServo(uint8_t pin);
 		bool configureAsDigital(uint8_t pin, uint8_t mode);
 		bool configureAsAnalog(uint8_t pin);
+		bool configureAsAnalog(uint8_t pin);
+		bool configureSerial(uint8_t port);
+		bool configureI2C(uint8_t port);
+		bool configureSPI(uint8_t port);
 		bool configureAsComms(uint8_t pin);
 
 
