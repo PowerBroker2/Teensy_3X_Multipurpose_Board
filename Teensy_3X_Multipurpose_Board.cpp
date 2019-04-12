@@ -53,8 +53,20 @@ void MPBoard::begin()
 
 	SPI.begin();
 
+	configureSerial(1);
+	configureSerial(2);
+	configureSerial(3);
+	configureSerial(4);
+	configureSerial(5);
+
+	configureI2C(0);
+	configureI2C(1);
+	configureI2C(2);
+
+	configureSPI(0);
+
 	myMP3.begin(MP3_SERIAL_PORT);
-	
+
 	analogReadResolution(16);
 
 	pinMode(GPS_PPS_PIN, INPUT);
@@ -91,6 +103,18 @@ void MPBoard::begin(uint32_t _serial_baud,
 	Wire2.begin();
 
 	SPI.begin();
+
+	configureSerial(1);
+	configureSerial(2);
+	configureSerial(3);
+	configureSerial(4);
+	configureSerial(5);
+
+	configureI2C(0);
+	configureI2C(1);
+	configureI2C(2);
+
+	configureSPI(0);
 
 	myMP3.begin(MP3_SERIAL_PORT);
 
@@ -465,11 +489,94 @@ bool MPBoard::configureAsAnalog(uint8_t pin)
 
 
 
+bool MPBoard::configureSerial(uint8_t port)
+{
+	if (port == 1)
+	{
+		configureAsComms(SERIAL1_RX_PIN);
+		configureAsComms(SERIAL1_TX_PIN);
+		return true;
+	}
+	else if (port == 2)
+	{
+		configureAsComms(SERIAL2_RX_PIN);
+		configureAsComms(SERIAL2_TX_PIN);
+		return true;
+	}
+	else if (port == 3)
+	{
+		configureAsComms(SERIAL3_RX_PIN);
+		configureAsComms(SERIAL3_TX_PIN);
+		return true;
+	}
+	else if (port == 4)
+	{
+		configureAsComms(SERIAL4_RX_PIN);
+		configureAsComms(SERIAL4_TX_PIN);
+		return true;
+	}
+	else if (port == 5)
+	{
+		configureAsComms(SERIAL5_RX_PIN);
+		configureAsComms(SERIAL5_TX_PIN);
+		return true;
+	}
+
+	return false;
+}
+
+
+
+
+bool MPBoard::configureI2C(uint8_t port)
+{
+	if (port == 0)
+	{
+		configureAsComms(I2C0_SCL_PIN);
+		configureAsComms(I2C0_SDA_PIN);
+		return true;
+	}
+	else if (port == 1)
+	{
+		configureAsComms(I2C1_SCL_PIN);
+		configureAsComms(I2C1_SDA_PIN);
+		return true;
+	}
+	else if (port == 2)
+	{
+		configureAsComms(I2C2_SCL_PIN);
+		configureAsComms(I2C2_SDA_PIN);
+		return true;
+	}
+
+	return false;
+}
+
+
+
+
+bool MPBoard::configureSPI(uint8_t port)
+{
+	if (port == 0)
+	{
+		configureAsComms(SPI0_CS_PIN);
+		configureAsComms(SPI0_MOSI_PIN);
+		configureAsComms(SPI0_MISO_PIN);
+		configureAsComms(SPI0_SCK_PIN);
+		return true;
+	}
+
+	return true;
+}
+
+
+
+
 bool MPBoard::configureAsComms(uint8_t pin)
 {
 	/********************************************************************/
-	// SPI1 not currently supported (can still be used if configured 
-	// manually)
+	// SPI1 not currently supported due to conflicts with other pins
+	// (can still be used if configured manually)
 	/********************************************************************/
 	
 	if (pin == SERIAL1_RX_PIN)
