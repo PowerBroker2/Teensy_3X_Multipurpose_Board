@@ -375,74 +375,11 @@ bool MPBoard::configureAsDigital(uint8_t pin, uint8_t mode)
 
 bool MPBoard::configureAsAnalog(uint8_t pin)
 {
-	if (pin == S0_PIN)
-	{
-		if(servo0.attached())
-			servo0.detach();
-		S0_pinState = ANALOG;
-		return true;
-	}
-	else if (pin == S1_PIN)
+	if (pin == S1_PIN)
 	{
 		if (servo1.attached())
 			servo1.detach();
 		S1_pinState = ANALOG;
-		return true;
-	}
-	else if (pin == S2_PIN)
-	{
-		if (servo2.attached())
-			servo2.detach();
-		S2_pinState = ANALOG;
-		return true;
-	}
-	else if (pin == S3_PIN)
-	{
-		if (servo3.attached())
-			servo3.detach();
-		S3_pinState = ANALOG;
-		return true;
-	}
-	else if (pin == S4_PIN)
-	{
-		if (servo4.attached())
-			servo4.detach();
-		S4_pinState = ANALOG;
-		return true;
-	}
-	else if (pin == S5_PIN)
-	{
-		if (servo5.attached())
-			servo5.detach();
-		S5_pinState = ANALOG;
-		return true;
-	}
-	else if (pin == S6_PIN)
-	{
-		if (servo6.attached())
-			servo6.detach();
-		S6_pinState = ANALOG;
-		return true;
-	}
-	else if (pin == S7_PIN)
-	{
-		if (servo7.attached())
-			servo7.detach();
-		S7_pinState = ANALOG;
-		return true;
-	}
-	else if (pin == S8_PIN)
-	{
-		if (servo8.attached())
-			servo8.detach();
-		S8_pinState = ANALOG;
-		return true;
-	}
-	else if (pin == S9_PIN)
-	{
-		if (servo9.attached())
-			servo9.detach();
-		S9_pinState = ANALOG;
 		return true;
 	}
 	else if (pin == S10_PIN)
